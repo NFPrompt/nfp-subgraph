@@ -1,11 +1,11 @@
 {
   "bsc": {
     "nft721": {
-      "address": "0x228d57775dc5270b776c810b6f803dab065accad",
+      "address": "0x4cb680a2589d742c30556e359a352f9C511EeF54",
       "startBlock": 28341319
     },
     "nftmarket": {
-      "address": "0xfd6906c45bcdba5d3ab5c53c1fc61d51e7c92d92",
+      "address": "0xfB8CD07aB53b18834491F5Ce276e62725C0199Cb",
       "startBlock": 28341319
     }
   }
