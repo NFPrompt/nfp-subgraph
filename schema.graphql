@@ -1,0 +1,13 @@
+type NFPEvent @entity(immutable: true) {
+  id: Bytes!
+  type: String!
+  source: Bytes!
+  destination: Bytes!
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt! # uint256
+  db_id: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,50 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: nft721
+    network: bsc
+    source:
+      address: "0x228d57775dc5270b776c810b6f803dab065accad"
+      abi: nft721
+      startBlock: 28341319
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NFTCreated
+      abis:
+        - name: nft721
+          file: ./abis/nft721.json
+      eventHandlers:
+        - event: NFTCreated(indexed address,indexed uint256,string,uint256)
+          handler: handleNFTCreated
+      file: ./src/nft-721.ts
+  - kind: ethereum
+    name: nftmarket
+    network: bsc
+    source:
+      address: "0xfd6906c45bcdba5d3ab5c53c1fc61d51e7c92d92"
+      abi: nftmarket
+      startBlock: 28341319
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ItemBought
+        - ItemCanceled
+        - ItemListed
+      abis:
+        - name: nftmarket
+          file: ./abis/nftmarket.json
+      eventHandlers:
+        - event: ItemBought(indexed address,address,indexed address,indexed uint256,uint256)
+          handler: handleItemBought
+        - event: ItemCanceled(indexed address,indexed address,indexed uint256)
+          handler: handleItemCanceled
+        - event: ItemListed(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleItemListed
+      file: ./src/nftmarket.ts
