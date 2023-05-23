@@ -78,30 +78,38 @@ export class NFPEvent extends Entity {
     this.set("source", Value.fromBytes(value));
   }
 
-  get destination(): Bytes {
+  get destination(): Bytes | null {
     let value = this.get("destination");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return null;
     } else {
       return value.toBytes();
     }
   }
 
-  set destination(value: Bytes) {
-    this.set("destination", Value.fromBytes(value));
+  set destination(value: Bytes | null) {
+    if (!value) {
+      this.unset("destination");
+    } else {
+      this.set("destination", Value.fromBytes(<Bytes>value));
+    }
   }
 
-  get nftAddress(): Bytes {
+  get nftAddress(): Bytes | null {
     let value = this.get("nftAddress");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return null;
     } else {
       return value.toBytes();
     }
   }
 
-  set nftAddress(value: Bytes) {
-    this.set("nftAddress", Value.fromBytes(value));
+  set nftAddress(value: Bytes | null) {
+    if (!value) {
+      this.unset("nftAddress");
+    } else {
+      this.set("nftAddress", Value.fromBytes(<Bytes>value));
+    }
   }
 
   get tokenId(): BigInt {
@@ -117,30 +125,38 @@ export class NFPEvent extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
-  get price(): BigInt {
+  get price(): BigInt | null {
     let value = this.get("price");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return null;
     } else {
       return value.toBigInt();
     }
   }
 
-  set price(value: BigInt) {
-    this.set("price", Value.fromBigInt(value));
+  set price(value: BigInt | null) {
+    if (!value) {
+      this.unset("price");
+    } else {
+      this.set("price", Value.fromBigInt(<BigInt>value));
+    }
   }
 
-  get db_id(): string {
+  get db_id(): string | null {
     let value = this.get("db_id");
     if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
+      return null;
     } else {
       return value.toString();
     }
   }
 
-  set db_id(value: string) {
-    this.set("db_id", Value.fromString(value));
+  set db_id(value: string | null) {
+    if (!value) {
+      this.unset("db_id");
+    } else {
+      this.set("db_id", Value.fromString(<string>value));
+    }
   }
 
   get blockNumber(): BigInt {
