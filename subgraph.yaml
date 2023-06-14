@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0x4cb680a2589d742c30556e359a352f9C511EeF54"
       abi: nft721
-      startBlock: 28341319
+      startBlock: 29089921
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -22,13 +22,14 @@ dataSources:
         - event: NFTCreated(indexed address,indexed uint256,string,uint256)
           handler: handleNFTCreated
       file: ./src/nft-721.ts
+
   - kind: ethereum
     name: nftmarket
     network: bsc
     source:
-      address: "0xfB8CD07aB53b18834491F5Ce276e62725C0199Cb"
+      address: "0x2239cd9e6487ce40A74d589647Ed395f5c2092a1"
       abi: nftmarket
-      startBlock: 28341319
+      startBlock: 29089921
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -48,3 +49,24 @@ dataSources:
         - event: ItemListed(indexed address,indexed address,indexed uint256,uint256)
           handler: handleItemListed
       file: ./src/nftmarket.ts
+
+  - kind: ethereum
+    name: checkin
+    network: bsc
+    source:
+      address: "0x45c36b3ee5f6c9b4b494515b21a59b8b78336536"
+      abi: checkin
+      startBlock: 29089921
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Hit
+      abis:
+        - name: checkin
+          file: ./abis/checkin.json
+      eventHandlers:
+        - event: Hit(indexed address,uint256,uint256)
+          handler: handleItemBought
+      file: ./src/checkin.ts
