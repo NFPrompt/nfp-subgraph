@@ -68,5 +68,5 @@ dataSources:
           file: ./abis/checkin.json
       eventHandlers:
         - event: Hit(indexed address,uint256,uint256)
-          handler: handleItemBought
+          handler: handleHit
       file: ./src/checkin.ts

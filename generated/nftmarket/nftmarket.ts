@@ -10,6 +10,58 @@ import {
   BigInt
 } from "@graphprotocol/graph-ts";
 
+export class AdminModified extends ethereum.Event {
+  get params(): AdminModified__Params {
+    return new AdminModified__Params(this);
+  }
+}
+
+export class AdminModified__Params {
+  _event: AdminModified;
+
+  constructor(event: AdminModified) {
+    this._event = event;
+  }
+
+  get sender(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get oldAdmin(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get newAdmin(): Address {
+    return this._event.parameters[2].value.toAddress();
+  }
+}
+
+export class BenificiaryModified extends ethereum.Event {
+  get params(): BenificiaryModified__Params {
+    return new BenificiaryModified__Params(this);
+  }
+}
+
+export class BenificiaryModified__Params {
+  _event: BenificiaryModified;
+
+  constructor(event: BenificiaryModified) {
+    this._event = event;
+  }
+
+  get sender(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get oldReceiver(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get newReceiver(): Address {
+    return this._event.parameters[2].value.toAddress();
+  }
+}
+
 export class ItemBought extends ethereum.Event {
   get params(): ItemBought__Params {
     return new ItemBought__Params(this);
@@ -100,6 +152,58 @@ export class ItemListed__Params {
   }
 }
 
+export class MarkeFeeModified extends ethereum.Event {
+  get params(): MarkeFeeModified__Params {
+    return new MarkeFeeModified__Params(this);
+  }
+}
+
+export class MarkeFeeModified__Params {
+  _event: MarkeFeeModified;
+
+  constructor(event: MarkeFeeModified) {
+    this._event = event;
+  }
+
+  get sender(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get oldFee(): BigInt {
+    return this._event.parameters[1].value.toBigInt();
+  }
+
+  get newFee(): BigInt {
+    return this._event.parameters[2].value.toBigInt();
+  }
+}
+
+export class MarkeStatusModified extends ethereum.Event {
+  get params(): MarkeStatusModified__Params {
+    return new MarkeStatusModified__Params(this);
+  }
+}
+
+export class MarkeStatusModified__Params {
+  _event: MarkeStatusModified;
+
+  constructor(event: MarkeStatusModified) {
+    this._event = event;
+  }
+
+  get sender(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get oldStatus(): boolean {
+    return this._event.parameters[1].value.toBoolean();
+  }
+
+  get newStatus(): boolean {
+    return this._event.parameters[2].value.toBoolean();
+  }
+}
+
 export class nftmarket__getListingByNFTResultValue0Struct extends ethereum.Tuple {
   get price(): BigInt {
     return this[0].toBigInt();
@@ -186,7 +290,7 @@ export class ConstructorCall__Inputs {
     return this._call.inputValues[1].value.toBigInt();
   }
 
-  get admin(): Address {
+  get administrator(): Address {
     return this._call.inputValues[2].value.toAddress();
   }
 }
