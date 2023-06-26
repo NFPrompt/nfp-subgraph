@@ -54,7 +54,7 @@ dataSources:
     name: nftmarketv2
     network: bsc
     source:
-      address: "0x060C476431A1c49853ADdA064B4230D0b573316d"
+      address: "0x27b0F2B249D48a0f48ae874646267872Dc209EDe"
       abi: nftmarketv2
       startBlock: 29430590
     mapping:
